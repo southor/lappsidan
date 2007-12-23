@@ -1,0 +1,286 @@
+
+/* -------------------------- */
+/* --------- wrapper -------- */
+/* -------------------------- */
+
+body {
+	text-align: center;		/* just to deal with pre ie7 aligning bug */
+	background-image: url("bilder/lappbakrund.jpg");
+}
+
+#wrapper {
+	position: relative; 
+	width: 752px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+/* -------------------------- */
+/* ------- link styles ------ */
+/* -------------------------- */
+ 
+ a.menu-link:link 	{color: #aaff00; text-decoration: none} 
+ a.menu-link:visited	{color: #ffaa22; text-decoration: none}
+ a.menu-link:hover 	{color: #0000aa; text-decoration: underline}  
+ a.menu-link:active 	{color: #0000aa; text-decoration: underline}
+
+/* -------------------------- */
+/* ----------- tags --------- */
+/* -------------------------- */
+
+h1 { text-align: center; }
+h2 { text-align: center; }
+h3 { text-align: center; }
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* ------------------- header ---------------------- */
+/* ------------------------------------------------- */
+
+#header {
+	position : absolute;
+	top : 0px;
+	left: 0px;
+	width: 752px;
+	height: 80px;
+
+	background: #222544;
+	color : #eeeee6;
+}
+
+#header-front {
+	position : relative;	
+	top : 2px;
+	left: 2px;
+	width: 744px;
+	height: 72px;
+
+	border: #eeeee6 2px dashed;
+	
+	text-align: center;
+}
+
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* --------------------- menu ---------------------- */
+/* ------------------------------------------------- */
+
+.menu-colors {
+	background: #88aabb;
+	color : #000000;
+}
+
+/* -------------------------- */
+/* ----------- 800 ---------- */
+/* -------------------------- */
+
+#menu-800 {
+	position : absolute;
+	top : 84px;
+	left: 0px;
+	width : 148px;
+	height: 800px;
+}
+
+#menu-800-front {
+	position : relative;
+	top : 2px;
+	left: 2px;
+	width : 140px;
+	height: 792px;
+
+	border: #222544 2px dashed;
+}
+
+/* -------------------------- */
+/* ---------- 2000 ---------- */
+/* -------------------------- */
+
+#menu-2000 {
+	position : absolute;
+	top : 84px;
+	left: 0px;
+	width : 148px;
+	height: 2000px;
+}
+
+#menu-2000-front {
+	position : relative;
+	top : 2px;
+	left: 2px;
+	width : 140px;
+	height: 1992px;
+
+	border: #222544 2px dashed;
+}
+
+/* -------------------------- */
+/* ---------- 3000 ---------- */
+/* -------------------------- */
+
+#menu-3000 {
+	position : absolute;
+	top : 84px;
+	left: 0px;
+	width : 148px;
+	height: 3000px;
+}
+
+#menu-3000-front {
+	position : relative;
+	top : 2px;
+	left: 2px;
+	width : 140px;
+	height: 2992px;
+
+	border: #222544 2px dashed;
+}
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* --------------------- main ---------------------- */
+/* ------------------------------------------------- */
+
+
+.main-colors {
+	background: #eeeee6;
+	color : #000000;
+}
+
+/* -------------------------- */
+/* ----------- 800 ---------- */
+/* -------------------------- */
+
+#main-800 {
+	position : absolute;
+	left : 152px;
+	top : 84px;
+	width: 600px;
+	height: 800px;
+}
+
+#main-800-dashed {
+	position : relative;
+	left : 2px;
+	top : 2px;
+	width: 592px;
+	height: 792px;
+
+	border: #88aabb 2px dashed;
+}
+
+#main-800-front {
+	position : relative;
+	left : 4px;
+	top : 4px;
+	width: 584px;
+	height: 784px;
+}
+
+/* -------------------------- */
+/* ---------- 2000 ---------- */
+/* -------------------------- */
+
+#main-2000 {
+	position : absolute;
+	left : 152px;
+	top : 84px;
+	width: 600px;
+	height: 2000px;
+}
+
+#main-2000-dashed {
+	position : relative;
+	left : 2px;
+	top : 2px;
+	width: 592px;
+	height: 1992px;
+
+	border: #88aabb 2px dashed;
+}
+
+#main-2000-front {
+	position : relative;
+	left : 4px;
+	top : 4px;
+	width: 584px;
+	height: 1984px;
+}
+
+/* -------------------------- */
+/* ---------- 3000 ---------- */
+/* -------------------------- */
+
+#main-3000 {
+	position : absolute;
+	left : 152px;
+	top : 84px;
+	width: 600px;
+	height: 3000px;
+}
+
+#main-3000-dashed {
+	position : relative;
+	left : 2px;
+	top : 2px;
+	width: 592px;
+	height: 2992px;
+
+	border: #88aabb 2px dashed;
+}
+
+#main-3000-front {
+	position : relative;
+	left : 4px;
+	top : 4px;
+	width: 584px;
+	height: 2984px;
+}
+
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* ------------------- footer ---------------------- */
+/* ------------------------------------------------- */
+
+#footer-800 {
+	position : absolute;
+	left : 0px;
+	top : 888px;
+	width: 752px;
+	height: 64px;
+  
+	background: #335533;
+}
+
+#footer-2000 {
+	position : absolute;
+	left : 0px;
+	top : 2088px;
+	width: 752px;
+	height: 64px;
+  
+	background: #335533;
+}
+
+#footer-3000 {
+	position : absolute;
+	left : 0px;
+	top : 3088px;
+	width: 752px;
+	height: 64px;
+  
+	background: #335533;
+}
+
+#footer-front {
+	position : relative;
+	left : 2px;
+	top : 2px;
+	width: 744px;
+	height: 56px;
+  
+	border: #eeeee6 2px dashed;
+	color : #000000;
+}
