@@ -1,0 +1,39 @@
+
+/* -------------------------- */
+/* --------- wrapper -------- */
+/* -------------------------- */
+
+body {
+	text-align: center;		/* just to deal with pre ie7 aligning bug */
+	background-image: url("bilder/lappbakrund.jpg");
+}
+
+#wrapper {
+	position: relative; 
+	width: ##((get-page-width))px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+/* -------------------------- */
+/* ------- link styles ------ */
+/* -------------------------- */
+ 
+ a.menu-link:link 		{color: #aaff00; text-decoration: none} 
+ a.menu-link:visited		{color: #ffaa22; text-decoration: none}
+ a.menu-link:hover 		{color: #0000aa; text-decoration: underline}  
+ a.menu-link:active 		{color: #0000aa; text-decoration: underline}
+
+/* -------------------------- */
+/* ----------- tags --------- */
+/* -------------------------- */
+
+h1 { text-align: center; }
+h2 { text-align: center; }
+h3 { text-align: center; }
+
+/* -------------------------- */
+/* --------- "frames" ------- */
+/* -------------------------- */
+
+##((generate-page-css-frames))

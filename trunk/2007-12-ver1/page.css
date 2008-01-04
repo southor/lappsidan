@@ -19,9 +19,9 @@ body {
 /* ------- link styles ------ */
 /* -------------------------- */
  
- a.menu-link:link 	{color: #aaff00; text-decoration: none} 
+ a.menu-link:link 		{color: #aaff00; text-decoration: none} 
  a.menu-link:visited	{color: #ffaa22; text-decoration: none}
- a.menu-link:hover 	{color: #0000aa; text-decoration: underline}  
+ a.menu-link:hover 		{color: #0000aa; text-decoration: underline}  
  a.menu-link:active 	{color: #0000aa; text-decoration: underline}
 
 /* -------------------------- */
@@ -145,7 +145,7 @@ h3 { text-align: center; }
 
 .main-colors {
 	background: #eeeee6;
-	color : #000000;
+	color: #000000;
 }
 
 /* -------------------------- */
