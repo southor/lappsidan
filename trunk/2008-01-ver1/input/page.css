@@ -10,7 +10,7 @@ body {
 
 #wrapper {
 	position: relative; 
-	width: ##((get-page-width))px;
+	width: ##((generate-page-width))px;
 	margin: 0 auto;
 	text-align: left;
 }
