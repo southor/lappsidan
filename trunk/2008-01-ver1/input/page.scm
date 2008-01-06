@@ -86,7 +86,7 @@
 (define main-heights '())
 
 ;; fill up main-heights with unique values
-(for-each (lamnda (x) 
+(for-each (lambda (x) 
 				(let ((main-height (cdr (assoc 'main-height (cdr x)))))
 						(if (not (member main-height main-heights))
 							(set! main-heights (cons main-height main-heights)))))
@@ -193,6 +193,7 @@
 
 
 (define (generate-page-css-frames)
+	(display "generate-page-css-frames start") (newline)
 	(let ((dash-width (cdr (assoc 'dash-width frame-properties)))
 			(border-margin (cdr (assoc 'border-margin frame-properties)))
 			(inner-margin (cdr (assoc 'inner-margin frame-properties)))
@@ -282,7 +283,8 @@
 					(cdr (assoc 'bg-color footer-properties)) 		;; bg-color
 					(cdr (assoc 'border-color footer-properties)) 	;; border-color
 					(cdr (assoc 'color footer-properties))) 		;; color				
-				))))
+				)))
+	(display "generate-page-css-frames end") (newline))
 				
 				
 				
