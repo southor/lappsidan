@@ -77,6 +77,8 @@
 ;; ----------------------------------- CODE ------------------------------------------
 ;; -----------------------------------------------------------------------------------
 
+(include "NDup\Scripting\Scheme\Extension\Lib1")
+
 
 (define (generate-page-width)
 	(number->string (cdr (assoc 'total-width page-properties))))
@@ -91,24 +93,26 @@
 						(if (not (member main-height main-heights))
 							(set! main-heights (cons main-height main-heights)))))
 			main-pages-properties)
+(set! main-heights (sort < main-heights))
+;;(set! debug #t)
+;;(breakpoint)
 
-
-(define (generate-css-attrib name value post)
-			(build-string "	" name ": " value post #\; #\newline))
+(define (generate-css-attrib name . rest)
+			(apply build-string #\tab name ": " (append rest '(#\; #\newline))))
 				
 
 
 (define (generate-css-frame-colors name bg-color color)
 	(build-string
 		"." name "-" "colors {"									#\newline
-			(generate-css-attrib "background" bg-color "")		#\newline
-			(generate-css-attrib "color" color "")				#\newline
+			(generate-css-attrib "background" #\# bg-color)
+			(generate-css-attrib "color" #\# color)
 		"}"														#\newline
 	))
 
 
 ;; main-height - If main-height = zero no main-height will be skipped when generating
-(define (generate-css-frame name x y w h main-height border-margin inner-margin dash-width border-color)
+(define (generate-css-frame name x y w h main-height border-margin inner-margin dash-width border-color text-align)
 	
 	(define (generate-frame-id type)
 			(build-string
@@ -118,8 +122,8 @@
 					(if (eq? type "") "" #\-)
 					type))
 					
-	(let* ((bw (- w (* 2 border-margin)))
-			(bh (- h (* 2 border-margin)))
+	(let* ((bw (- w (* 2 border-margin) (* 2 dash-width)))
+			(bh (- h (* 2 border-margin) (* 2 dash-width)))
 			(iw (- bw (* 2 inner-margin)))
 			(ih (- bh (* 2 inner-margin))))
 			
@@ -134,45 +138,47 @@
 					))
 		
 			(generate-frame-id "") " {" 								#\newline
-				(generate-css-attrib "position" "absolute" "") 			#\newline
-				(generate-css-attrib "left" x "px") 					#\newline
-				(generate-css-attrib "top" 	y "px") 					#\newline
-				(generate-css-attrib "width" w "px") 					#\newline
-				(generate-css-attrib "height" h "px") 					#\newline
+				(generate-css-attrib "position" "absolute")
+				(generate-css-attrib "left" x "px")
+				(generate-css-attrib "top" 	y "px")
+				(generate-css-attrib "width" w "px")
+				(generate-css-attrib "height" h "px")
 			"}"															#\newline
 			#\newline
 		
 			(generate-frame-id "dashed") " {"							#\newline
-				(generate-css-attrib "position" "relative" "")			#\newline
-				(generate-css-attrib "left" border-margin "px")			#\newline
-				(generate-css-attrib "top" border-margin "px")			#\newline
-				(generate-css-attrib "width" bw "px")					#\newline
-				(generate-css-attrib "height" bh "px")					#\newline
+				(generate-css-attrib "position" "relative")
+				(generate-css-attrib "left" border-margin "px")
+				(generate-css-attrib "top" border-margin "px")
+				(generate-css-attrib "width" bw "px")
+				(generate-css-attrib "height" bh "px")
 				#\newline
-				"border: #" border-color " " dash-width "px dashed;"	#\newline
+				#\tab "border: #" border-color " " dash-width "px dashed;"
+																		#\newline
 			"}"															#\newline
 			#\newline
 			
 			(generate-frame-id "inner") " {"							#\newline
-			(generate-css-attrib "position" "relative" "")				#\newline
-			(generate-css-attrib "left" inner-margin "px")				#\newline
-			(generate-css-attrib "top" inner-margin "px")				#\newline
-			(generate-css-attrib "width" iw "px")						#\newline
-			(generate-css-attrib "height" ih "px")						#\newline
+			(generate-css-attrib "position" "relative")
+			(generate-css-attrib "left" inner-margin "px")
+			(generate-css-attrib "top" inner-margin "px")
+			(generate-css-attrib "width" iw "px")
+			(generate-css-attrib "height" ih "px")
+			(if text-align (generate-css-attrib "text-align" text-align) "")
 			"}"															#\newline
 			#\newline
 			)))
 
 
 ;; type -   'single / 'multiple-pos / 'multiple-size
-(define (generate-css-frames name x y w h type bg-color border-color color)
+(define (generate-css-frames name x y w h type bg-color border-color color text-align)
 	
 	(let ((dash-width (cdr (assoc 'dash-width frame-properties)))			
 			(border-margin (cdr (assoc 'border-margin frame-properties)))
 			(inner-margin (cdr (assoc 'inner-margin frame-properties))))
 
 			(build-string				
-				(generate-css-frame-colors bg-color color)
+				(generate-css-frame-colors name bg-color color)
 				#\newline
 								
 				(apply build-string (map (lambda (main-height)											
@@ -186,7 +192,8 @@
 												border-margin
 												inner-margin
 												dash-width
-												border-color))
+												border-color
+												text-align))
 										main-heights)))))
 	
 
@@ -194,6 +201,8 @@
 
 (define (generate-page-css-frames)
 	(display "generate-page-css-frames start") (newline)
+	;;(throw-exception 'kossa '((k . 56)) #f)
+	
 	(let ((dash-width (cdr (assoc 'dash-width frame-properties)))
 			(border-margin (cdr (assoc 'border-margin frame-properties)))
 			(inner-margin (cdr (assoc 'inner-margin frame-properties)))
@@ -202,10 +211,12 @@
 			(top-margin (cdr (assoc 'top-margin page-properties)))
 			(frames-margin (cdr (assoc 'frames-margin frame-properties)))
 			
-			(header-properties (cdr (assoc 'header main-pages-properties)))
-			(menu-properties (cdr (assoc 'menu main-pages-properties)))
-			(main-properties (cdr (assoc 'main main-pages-properties)))
-			(footer-properties (cdr (assoc 'footer main-pages-properties))))
+			(header-properties (cdr (assoc 'header frames-properties)))
+			(menu-properties (cdr (assoc 'menu frames-properties)))
+			(main-properties (cdr (assoc 'main frames-properties)))
+			(footer-properties (cdr (assoc 'footer frames-properties))))
+		
+			(display "generate-page-css-frames 2") (newline)
 		
 		(let* ((header-x 0)
 				(header-y top-margin)
@@ -243,7 +254,8 @@
 				
 				;; genereate header classes
 				(generate-css-frame "header" header-x header-y header-w header-h 0 border-margin inner-margin dash-width
-					(cdr (assoc 'border-color header-properties)))
+					(cdr (assoc 'border-color header-properties))
+					"center")
 				#\newline
 				
 				
@@ -256,7 +268,9 @@
 				(generate-css-frames "menu" menu-x menu-y menu-w menu-h 'multiple-size
 					(cdr (assoc 'bg-color menu-properties)) 		;; bg-color
 					(cdr (assoc 'border-color menu-properties)) 	;; border-color
-					(cdr (assoc 'color menu-properties))) 			;; color
+					(cdr (assoc 'color menu-properties)) 			;; color
+					#f
+					)
 				#\newline
 				
 				
@@ -269,7 +283,9 @@
 				(generate-css-frames "main" main-x main-y main-w main-h 'multiple-size
 					(cdr (assoc 'bg-color main-properties)) 		;; bg-color
 					(cdr (assoc 'border-color main-properties)) 	;; border-color
-					(cdr (assoc 'color main-properties))) 			;; color
+					(cdr (assoc 'color main-properties)) 			;; color
+					#f
+					)
 				#\newline
 				
 				
@@ -282,9 +298,12 @@
 				(generate-css-frames "footer" footer-x footer-y footer-w footer-h 'multiple-pos
 					(cdr (assoc 'bg-color footer-properties)) 		;; bg-color
 					(cdr (assoc 'border-color footer-properties)) 	;; border-color
-					(cdr (assoc 'color footer-properties))) 		;; color				
+					(cdr (assoc 'color footer-properties)) 			;; color
+					#f
+					)
 				)))
-	(display "generate-page-css-frames end") (newline))
+	;;(display "generate-page-css-frames end") (newline) "tmp"
+	)
 				
 				
 				
