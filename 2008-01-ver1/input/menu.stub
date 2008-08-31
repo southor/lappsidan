@@ -1,0 +1,57 @@
+##((generate-html-frames-begin "menu" #t))
+
+<br />
+<br />
+<ul>
+	
+##((do
+	((lst (reverse main-pages-properties) (cdr lst))
+		(res '() (cons
+				(let ((current (car lst)))
+					(if (equal? page-name (car current))
+						(generate-unusable-menu-li current)
+						(generate-menu-li current)))
+				res)))						
+	((null? lst) (apply build-string res))))
+		
+		<!--
+	
+		<li class="unusable-link">
+				Startsidan
+		</li>
+		<li>
+			<a class="menu-link" href="historia.html" title="lappt&auml;ckets historia">
+				Historia
+			</a>
+		</li>
+		<li>
+			<a class="menu-link" href="tillverkning.html" title="tillverkningsprocessen">
+				Tillverkning
+			</a>
+		</li>
+		<li>
+			<a class="menu-link" href="galleri.html" title="exempelt&auml;cken">
+				Galleri
+			</a>
+		</li>
+		<li>
+			<a class="menu-link" href="salu.html" title="lappt&auml;cken till salu">
+				Till salu
+			</a>
+		</li>
+		<li>
+			<a class="menu-link" href="bestallning.html" title="best&auml;llning av lappt&auml;cken">
+				Best&auml;llning
+			</a>
+		</li>
+		<li>
+			<a class="menu-link" href="kontakt.html" title="e-post">
+				Kontakt
+			</a>
+		</li>
+		
+		-->
+		
+</ul>
+
+##((generate-html-frames-end))

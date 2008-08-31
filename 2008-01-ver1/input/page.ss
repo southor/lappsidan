@@ -12,7 +12,6 @@
 
 
 
-
 ;; ---------------------------------
 ;;
 ;; HELA SIDANS EGENSKAPER
@@ -58,13 +57,13 @@
 ;; height - öka denna om innehållet inte får plats
 (define main-pages-properties
 	'(
-	(start . 		((main-height . 1200)))
-	(bestallning . 	((main-height . 800)))
-	(galleri . 		((main-height . 3000)))
-	(historia . 	((main-height . 600)))
-	(kontakt . 		((main-height . 800)))
-	(salu . 		((main-height . 800)))
-	(tillverkning . ((main-height . 2500)))
+	(start . 		((main-height . 1200)	(link-name . "startsidan")			(link-title . "startsidan")))
+	(historia . 	((main-height . 800)	(link-name . "historia")			(link-title . "lappt&auml;ckets historia")))	
+	(tillverkning . ((main-height . 3000)	(link-name . "tillverkning")		(link-title . "tillverkningsprocessen")))	
+	(galleri . 		((main-height . 3000)	(link-name . "galleri")				(link-title . "exempelt&auml;cken")))	
+	(salu . 		((main-height . 800)	(link-name . "till salu")			(link-title . "lappt&auml;cken till salu")))	
+	(bestallning . 	((main-height . 800)	(link-name . "best&auml;llning")	(link-title . "best&auml;llning av lappt&auml;cken")))	
+	(kontakt . 		((main-height . 800)	(link-name . "kontakt")				(link-title . "e-post")))	
 	))
 
 
@@ -74,14 +73,20 @@
 ;; -----------------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------------
-;; ----------------------------------- CODE ------------------------------------------
+;; --------------------------------- CSS CODE ----------------------------------------
 ;; -----------------------------------------------------------------------------------
 
-(include "NDup\Scripting\Scheme\Extension\Lib1")
+;;(load "lob\\extra.ss")
 
+(define (get-property symbol properties)
+	(cdr (assoc symbol properties)))
+
+(define (get-number-property symbol properties)
+	(number->string (get-property symbol properties)))
 
 (define (generate-page-width)
-	(number->string (cdr (assoc 'total-width page-properties))))
+	(get-number-property 'total-width page-properties))
+	;;(number->string (cdr (assoc 'total-width page-properties))))
 	
 
 ;; define main-heights
@@ -310,7 +315,73 @@
 				
 
 
+;; -----------------------------------------------------------------------------------
+;; -----------------------------------------------------------------------------------
+;; -----------------------------------------------------------------------------------
+;; -------------------------------- HTML CODE ----------------------------------------
+;; -----------------------------------------------------------------------------------
 
+(define page-name #f)
+
+
+(define (set-current-page-name sym)
+	(set! page-name sym)
+	"")
+
+(define (generate-html-frames-begin frame-name use-number-name)
+	(let ((number-str (if use-number-name (build-string "-"
+													(get-number-property 'main-height (get-property page-name main-pages-properties))
+													) "")))
+  	 (build-string
+		"<div id=\"" frame-name number-str "\" class=\"" frame-name "-colors\">" #\newline
+		"<div id=\"" frame-name number-str "-dashed\">" #\newline
+		"<div id=\"" frame-name number-str "-inner\">" #\newline
+         ))
+)
+
+(define (generate-html-frames-end)
+	(build-string
+		"</div>" #\newline
+		"</div>" #\newline
+		"</div>" #\newline
+	)
+)
+
+(define (generate-html-menu)
+	(build-string (generate-html-frames-start 'menu #t))
+		
+		
+)
+
+(define (generate-html-header)
+	(build-string
+		(generate-html-frames-start 'header #t)
+		"<img src="bilder/lappsidan.gif" alt="Lappsidan" />"
+	)
+)
+
+(define (generate-html-head) #f
+)
+
+(define (generate-unusable-menu-li properties)
+	(build-string
+		"<li class=\"unusable-link\">" #\newline
+		(get-property 'link-name (cdr properties)) #\newline
+		"</li>" #\newline
+	))
+		
+
+(define (generate-menu-li properties)
+	(let ((link-name (get-property 'link-name (cdr properties)))
+		  (link-title (get-property 'link-title (cdr properties)))
+		  )
+	(build-string
+		"<li>" #\newline
+		"<a class=\"menu-link\" href=\"" (symbol->string (car properties)) ".html\" title=\"" link-title "\">" #\newline
+		link-name #\newline
+		"</a>" #\newline
+		"</li>" #\newline
+	)))
 
 
 				
