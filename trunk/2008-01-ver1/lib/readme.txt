@@ -1,0 +1,1 @@
+SSWPG - scheme static Webpage generating
