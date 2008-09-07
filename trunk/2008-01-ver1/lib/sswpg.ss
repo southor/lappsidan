@@ -20,6 +20,13 @@
                                          (preprocess-file-generate (path-parent full-input-path) (path-parent full-output-path) full-input-path)))) ;; to be availible at evaluation
 				(set-top-level-value! 'get-current-output-directory (lambda () output-path))
 				;; (set-top-level-value! 'get-current-filename (lambda () input-file))
+				(set-top-level-value! 'output-file
+					(lambda (filename str)
+						(let ((output (open-output-file output-file)))
+							(display str output)
+               			    (close-output-port output)
+							)))
+												
 				(let ((input (open-input-file input-file))
                       (str '())
 						)
