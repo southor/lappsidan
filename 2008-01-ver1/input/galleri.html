@@ -1,0 +1,68 @@
+
+##((set-current-page-name 'galleri))
+
+##((import-file "common-begin.stub"))
+
+##((generate-html-frames-begin "main" #t))
+
+	<br />
+	<h2>
+		Galleri.
+		<br />
+	</h2>
+	<br />
+	
+	<table>
+
+
+	##((let* (
+			  (exempel-list
+				'(
+					(1 . "Alla uppskattar ett <br />
+							varmt lappt&auml;cke. <br />
+							Speciellt om man inte har <br />
+							s&aring; mycket p&auml;ls.")
+				))
+			  (generate-tacke-td
+				(lambda (name i j)
+					(build-string
+						"<td>" #\newline
+						"<a href=\"galleri/" name i "-bild" j ".html\" "
+							"title=\"f&ouml;rstora\">" #\newline
+							"<img src=\"galleri-mini/" name i "-bild" j ".jpg\" />" #\newline
+						"</a>"
+						"</td>" #\newline
+						)))
+			  (generate-tacke-tr
+				(lambda (name i properties)
+					(build-string
+						"<tr>" #\newline
+						(do ((j (get-property 'number-of-photos properties) (- j 1))
+							 (res '() (cons (generate-tacke-td name i j) res)))
+							((<= j 0) res))
+						"<td>" #\newline
+						(get-property 'text properties) #\newline
+						"</td>" #\newline
+						"</tr>" #\newline
+						#\newline
+						)))
+			  (generate-trs
+				(lambda (name lst)
+					(do
+						((i 1 (+ i 1))
+						(li lst (cdr li))
+						(res '() (cons (generate-tacke-tr name i (car li)) res)))
+						((null? li) (apply build-string (reverse res))))))
+				)
+		(do
+			((li gallery-list (cdr li))
+			 (res '() (cons (generate-trs (car (car li)) (cdr (car li))) res)))
+			((null? li) (apply build-string (reverse res))))
+		))
+
+	</table>
+
+##((generate-html-frames-end))
+	
+##((import-file "common-end.stub"))
+

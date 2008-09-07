@@ -7,64 +7,7 @@
 ;; ------------------------------------ DATA ----------------------------------------
 ;; ----------------------------------------------------------------------------------
 
-
-
-
-
-
-;; ---------------------------------
-;;
-;; HELA SIDANS EGENSKAPER
-;; 
-;; ---------------------------------
-
-;; total-width - bredden på hela sidan (anpassat för minst 800*600)
-(define page-properties
-	'(
-	(total-width . 752)
-	(header-height . 80)
-	(menu-width . 148)
-	(footer-height . 64)
-	(top-margin . 0)
-	))
-
-	
-(define frame-properties
-	'(
-	(dash-width . 2)
-	(frames-margin . 4)
-	(border-margin . 2)
-	(inner-margin . 2)
-	))
-
-
-(define frames-properties
-	'(
-	(header (bg-color . "222544") (border-color . "eeeee6") (color . "eeeee6"))
-	(menu 	(bg-color . "88aabb") (border-color . "222544") (color . "000000"))
-	(main 	(bg-color . "eeeee6") (border-color . "88aabb") (color . "000000"))
-	(footer (bg-color . "335533") (border-color . "eeeee6") (color . "000000"))
-	))
-
-
-
-;; ---------------------------------
-;;
-;; ENSKILDA SIDORS EGENSKAPER
-;; 
-;; ---------------------------------
-
-;; height - öka denna om innehållet inte får plats
-(define main-pages-properties
-	'(
-	(start . 		((main-height . 1200)	(link-name . "startsidan")			(link-title . "startsidan")))
-	(historia . 	((main-height . 800)	(link-name . "historia")			(link-title . "lappt&auml;ckets historia")))	
-	(tillverkning . ((main-height . 3000)	(link-name . "tillverkning")		(link-title . "tillverkningsprocessen")))	
-	(galleri . 		((main-height . 3000)	(link-name . "galleri")				(link-title . "exempelt&auml;cken")))	
-	(salu . 		((main-height . 800)	(link-name . "till salu")			(link-title . "lappt&auml;cken till salu")))	
-	(bestallning . 	((main-height . 800)	(link-name . "best&auml;llning")	(link-title . "best&auml;llning av lappt&auml;cken")))	
-	(kontakt . 		((main-height . 800)	(link-name . "kontakt")				(link-title . "e-post")))	
-	))
+(load "input/properties.ss")
 
 
 

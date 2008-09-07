@@ -1,10 +1,16 @@
 (define (build-string . args)
+	(define (convert-char c)
+		(case c
+			(#\å "&aring;")
+			(#\ä "&auml;")
+			(#\ö "&ouml;")
+			(else (string c))))		
 	(define (handle-arg arg)
       (cond
-        ((string? arg) arg)
-        ((char? arg) (string arg))
+        ((string? arg) (apply string-append (map convert-char (string->list arg))))
+        ((char? arg) (convert-char arg))
         ((number? arg) (number->string arg))
-		((list? arg) (build-string arg))
+		((list? arg) (apply build-string arg))
         (else (begin
 				;;(display " ") (display arg)
 				(error 'build-string "invalid arg passed to build-string")))))
