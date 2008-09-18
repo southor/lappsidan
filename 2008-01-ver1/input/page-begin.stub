@@ -1,0 +1,13 @@
+##((import-file "common-begin1.stub"))page.css##((import-file "common-begin2.stub"))
+
+
+
+
+##((generate-html-frames-begin "header" #f))
+	
+	<img src="bilder/lappsidan.gif" alt="Lappsidan" />
+
+##((generate-html-frames-end))
+
+##((import-file "menu.stub"))
+

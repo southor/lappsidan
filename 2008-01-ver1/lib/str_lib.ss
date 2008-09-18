@@ -11,6 +11,7 @@
         ((char? arg) (convert-char arg))
         ((number? arg) (number->string arg))
 		((list? arg) (apply build-string arg))
+		((not arg) "")
         (else (begin
 				;;(display " ") (display arg)
 				(error 'build-string "invalid arg passed to build-string")))))
