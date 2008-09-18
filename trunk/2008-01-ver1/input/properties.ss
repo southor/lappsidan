@@ -55,111 +55,139 @@
 	(kontakt . 		((main-height . 800)	(link-name . "kontakt")				(link-title . "e-post")))	
 	))
 
-;; täcken
+;; beskrivning/namn av/på egenskaperna
+(define gallery-list-properties-define '(
+	(number-of-photos . "antal foton")
+	(name . "namn")
+	(type . "mönstertyp")
+	(size . "storlek")
+	(year . "tillverkningsår")
+	(status . "status")
+		;; private, for-sale, sold
+	(price . "pris")
+	(price1 . "pris omonterat")
+	(price2 . "prisex. färdigt")
+	(photo . "Foto")
+	))
+	
+(define patchwork-status-text '(
+	(private . "Privat &auml;go")
+	(for-sale . "Till salu")
+	(sold . "Sålt")
+	))
+
+
+;; Galleri
 (define gallery-list
 	'(
-	  ("tacke" . (
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 1 <br />
-							Regnb&aring;ge <br />
-							Tegelv&auml;gg <br />
-							180*140 cm <br />
-							2006 <br />
-							Privat &auml;go <br />
-							Foto: B. S&ouml;derberg"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 2 <br />
-							Sexkanter <br />
-							Mall, applikation <br />
-							150*200 cm<br />
-							1999 <br />
-							Privat &auml;go <br />
-							Foto: B. S&ouml;derberg"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 3 <br />
-							Vittvitt <br />
-							Stickt&auml;cke <br />
-							150*200 cm <br />
-							2007 <br />
-							Till Salu 6000:- <br />
-							Foto: J. S&ouml;derberg <br />"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 4 <br />
-							Niohundrasjuttiotv&aring; <br />
-							Rucklarens v&auml;g <br />
-							150*200 cm <br />
-							2007 <br />
-							Till Salu 3780:- <br />
-							Foto: J. S&ouml;derberg <br />"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 5 <br />
-							Tradition <br />
-							Blockhus <br />
-							150*200 cm <br />
-							1998 <br />
-							Privat &auml;go <br />
-							Foto: J. S&ouml;derberg <br />"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 6 <br />
-							Stj&auml;rnt&auml;cke <br />
-							Mallar <br />
-							150*200 cm <br />
-							1998 <br />
-							Privat &auml;go <br />
-							Foto: J. S&ouml;derberg"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 7 <br />
-							Emmas Dopt&auml;cke <br />
-							Moe's Basket <br />
-							70*50 cm <br />
-							2007 <br />
-							Privat &auml;go <br />
-							Foto: U. Nyl&eacute;n <br />							
-							Linn Nyl&eacute;n"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 8 <br /> 
-							Pippi, 2007<br />
-							Hexagon 135*102 cm<br />
-							Till salu Omonterat: 850 kr <br />
-							prisex. f&auml;rdigt 1400 kr <br />
-							Foto: U. Nyl&eacute;n <br />							
-							Linn Nyl&eacute;n"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 9 <br />
-							Gul Hypnos <br />
-							Moe's Basket <br />
-							135*102 cm <br />
-							2007 <br />
-							Till salu Omonterat: 850 kr <br />
-							prisex. f&auml;rdigt 1400 kr <br />
-							Foto: U. Nyl&eacute;n <br />"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 10 <br />
-							Vildkatt <br />
-							Hexagon 2007 <br />
-							135*102 cm <br />
-							Till salu Omonterat: 1100 kr <br />
-							prisex. f&auml;rdigt 2730 kr <br />
-							Foto: U. Nyl&eacute;n <br />"))
-		((number-of-photos . 2)
-		 (text . "T&auml;cke 11 <br />
-							R&ouml;dgr&ouml;n R&ouml;ra <br />
-							Tegelv&auml;gg <br />
-							180*140 cm <br />
-							2007 <br />
-							Privat &auml;go <br />
-							Foto: U. Nyl&eacute;n"))
-		((number-of-photos . 1)
-		 (text . "T&auml;cke 12 <br />
-							Linns t&auml;cke <br />
-							Travade kuber <br />
-							70*50 cm <br />
-							2007 <br />
-							Privat &auml;go <br />
-							Foto: J. S&ouml;derberg"))
+	  ("tacke" "Lapptäcke" (
+		((number-of-photos . 2) 		;; tacke 1
+		 (name . "Regnb&aring;ge")
+		 (type . "Tegelv&auml;gg")
+		 (size . "180*140 cm")
+		 (year . "2006")
+		 (status . private)
+		 (photo . "B. S&ouml;derberg")
+		)
+		((number-of-photos . 2)			;; tacke 2
+		 (name . "sexkanter")
+		 (type . "Mall, applikation")
+		 (size . "150*200 cm")
+		 (year . "1999")
+		 (status . private)
+		 (photo . "B. S&ouml;derberg")
+		)
+		((number-of-photos . 2)			;; tacke 3
+		 (name . "vittvitt")
+		 (type . "Stickt&auml;cke")
+		 (size . "150*200 cm")
+		 (year . "2007")
+		 (status . for-sale)
+		 (price . "6000:-")
+		 (photo . "J. S&ouml;derberg")
+		)
+		((number-of-photos . 2)			;; tacke 4
+		 (name . "Niohundrasjuttiotv&aring;")
+		 (type . "Rucklarens v&auml;g")
+		 (size . "150*200 cm")
+		 (year . "2007")
+		 (status . for-sale)
+		 (price . "3780:-")
+		 (photo . "J. S&ouml;derberg")
+		)
+		((number-of-photos . 2)			;; tacke 5
+		 (name . "Tradition")
+		 (type . "Blockhus")
+		 (size . "150*200 cm")
+		 (year . "1998")
+		 (status . private)
+		 (photo . "J. S&ouml;derberg")
+		)
+		((number-of-photos . 2)			;; tacke 6
+		 (name . "Stj&auml;rnt&auml;cke")
+		 (type . "Mallar")
+		 (size . "150*200 cm")
+		 (year . "1998")
+		 (status . private)
+		 (photo . "J. S&ouml;derberg")
+		)
+		((number-of-photos . 2)			;; tacke 7
+		 (name . "Emmas Dopt&auml;cke")
+		 (type . "Moe's Basket")
+		 (size . "70*50 cm")
+		 (year . "2007")
+		 (status . private)
+		 (photo . "U. Nyl&eacute;n, Linn Nyl&eacute;n")
+		 )
+		((number-of-photos . 2)			;; tacke 8
+		 (name . "Pippi")
+		 (type . "Hexagon")
+		 (size . "135*102 cm")
+		 (year . "2007")
+		 (status . for-sale)
+		 (price1 . "850 kr")
+		 (price2 . "1400 kr")
+		 (photo . "U. Nyl&eacute;n, Linn Nyl&eacute;n")
+		 )
+		((number-of-photos . 2)			;; tacke 9
+		 (name . "Gul Hypnos")
+		 (type . "Moe's Basket")
+		 (size . "135*102 cm")
+		 (year . "2007")
+		 (status . for-sale)
+		 (price1 . "850 kr")
+		 (price2 . "1400 kr")
+		 (photo . "U. Nyl&eacute;n")
+		 )
+		((number-of-photos . 2)			;; tacke 10
+		 (name . "Vildkatt")
+		 (type . "Hexagon")
+		 (size . "135*102 cm")
+		 (year . "2007")
+		 (status . for-sale)
+		 (price1 . "1100 kr")
+		 (price2 . "2730 kr")
+		 (photo . "U. Nyl&eacute;n")
+		 )
+		((number-of-photos . 2)			;; tacke 11
+		 (name . "R&ouml;dgr&ouml;n R&ouml;ra")
+		 (type . "Tegelv&auml;gg")
+		 (size . "180*140 cm")
+		 (year . "2007")
+		 (status . private)
+		 (photo . "U. Nyl&eacute;n")
+		 )
+		((number-of-photos . 1)			;; tacke 12
+		 (name . "Linns t&auml;cke")
+		 (type . "Travade kuber")
+		 (size . "70*50 cm")
+		 (year . "2007")
+		 (status . private)
+		 (photo . "J. S&ouml;derberg")
+		)
 		))
-	  ("exempel" . (		
-		((number-of-photos . 1)
+	  ("exempel" "Exempel" (		
+		((number-of-photos . 1)		 
 		 (text . "Alla uppskattar ett <br />
 					varmt lappt&auml;cke. <br />
 					Speciellt om man inte har <br />

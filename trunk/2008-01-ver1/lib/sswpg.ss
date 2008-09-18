@@ -14,18 +14,23 @@
         (let ()
             (load input-ss-file) ;; to be availible at evaluation
             (lambda (input-path output-path input-file)
-                (set-top-level-value! 'import-file
+                (set-top-level-value! 'import-file ;; to be availible at evaluation
                    (lambda (filename) (let ((full-input-path (path-append input-path filename))
-											(full-output-path (path-append input-path filename)))
-                                         (preprocess-file-generate (path-parent full-input-path) (path-parent full-output-path) full-input-path)))) ;; to be availible at evaluation
-				(set-top-level-value! 'get-current-output-directory (lambda () output-path))
+											(full-output-path (path-append output-path filename)))
+                                         (preprocess-file-generate (path-parent full-input-path) (path-parent full-output-path) full-input-path))))
+				(set-top-level-value! 'get-current-output-directory (lambda () output-path)) ;; to be availible at evaluation
 				;; (set-top-level-value! 'get-current-filename (lambda () input-file))
-				(set-top-level-value! 'output-file
+				(set-top-level-value! 'output-file ;; to be availible at evaluation
 					(lambda (filename str)
-						(let ((output (open-output-file output-file)))
-							(display str output)
-               			    (close-output-port output)
-							)))
+						(let ((total-filename (path-append output-path filename)))
+							(display " ")
+							(display total-filename)
+							(display " ")
+							(if (find-file total-filename) (delete-file total-filename))
+							(let ((output (open-output-file total-filename)))
+								(display str output)
+								(close-output-port output)
+								))))
 												
 				(let ((input (open-input-file input-file))
                       (str '())
@@ -104,12 +109,13 @@
 	
 	(define (preprocess-move-action input-path output-path input-filename output-filename)
 		(define (handle-file action-fun)
-			(if (find-file output-filename) (delete-file output-filename)
-			)
+			(if (find-file output-filename) (delete-file output-filename))
 			(action-fun input-path output-path input-filename output-filename))
 		(let ((filename-extension (get-filename-extension input-filename)))
 			;;(display filename-extension) (newline)
-			
+			;;(display " ")
+			;;(display output-path)
+			;;(display " ")
 			(cond ((memf string-ci=? filename-extension preprocess-file-types)
 						(display "processing file: ") (display input-filename) (newline)
 						(handle-file preprocess-file))
@@ -156,6 +162,9 @@
 				
 				(let ((output (open-output-file output-file)))
                                     ;;(display "okej0")
+									(display " ")
+									(display output-path)
+									(display " ")
   			            (display (preprocess-file-generate input-path output-path input-file) output)
                                     ;; (display "okej2")
                			    (close-output-port output)

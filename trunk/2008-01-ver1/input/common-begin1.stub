@@ -9,18 +9,4 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="all.css" />
-	<link rel="stylesheet" type="text/css" href="page.css" />
-
-</head>
-
-
-<body>
-<div id="wrapper">
-
-##((generate-html-frames-begin "header" #f))
-	
-	<img src="bilder/lappsidan.gif" alt="Lappsidan" />
-
-##((generate-html-frames-end))
-
-##((import-file "menu.stub"))
+	<link rel="stylesheet" type="text/css" href="

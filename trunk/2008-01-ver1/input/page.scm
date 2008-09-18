@@ -7,7 +7,65 @@
 ;; ------------------------------------ DATA ----------------------------------------
 ;; ----------------------------------------------------------------------------------
 
-(load "input/properties.ss")
+
+
+
+
+
+
+;; ---------------------------------
+;;
+;; HELA SIDANS EGENSKAPER
+;; 
+;; ---------------------------------
+
+;; total-width - bredden på hela sidan (anpassat för minst 800*600)
+(define page-properties
+	'(
+	(total-width . 752)
+	(header-height . 80)
+	(menu-width . 148)
+	(footer-height . 64)
+	(top-margin . 0)
+	))
+
+	
+(define frame-properties
+	'(
+	(dash-width . 2)
+	(frames-margin . 4)
+	(border-margin . 2)
+	(inner-margin . 2)
+	))
+
+
+(define frames-properties
+	'(
+	(header (bg-color . "222544") (border-color . "eeeee6") (color . "eeeee6"))
+	(menu 	(bg-color . "88aabb") (border-color . "222544") (color . "000000"))
+	(main 	(bg-color . "eeeee6") (border-color . "88aabb") (color . "000000"))
+	(footer (bg-color . "335533") (border-color . "eeeee6") (color . "000000"))
+	))
+
+
+
+;; ---------------------------------
+;;
+;; ENSKILDA SIDORS EGENSKAPER
+;; 
+;; ---------------------------------
+
+;; height - öka denna om innehållet inte får plats
+(define main-pages-properties
+	'(
+	(start . 		((main-height . 1200)))
+	(bestallning . 	((main-height . 800)))
+	(galleri . 		((main-height . 3000)))
+	(historia . 	((main-height . 600)))
+	(kontakt . 		((main-height . 800)))
+	(salu . 		((main-height . 800)))
+	(tillverkning . ((main-height . 2500)))
+	))
 
 
 
@@ -16,22 +74,14 @@
 ;; -----------------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------------
-;; --------------------------------- CSS CODE ----------------------------------------
+;; ----------------------------------- CODE ------------------------------------------
 ;; -----------------------------------------------------------------------------------
 
-;;(load "lob\\extra.ss")
+(include "NDup\Scripting\Scheme\Extension\Lib1")
 
-(define (get-property symbol properties)
-	(let ((p (assoc symbol properties)))
-		(if p (cdr p) p)))
-		
-
-(define (get-number-property symbol properties)
-	(number->string (get-property symbol properties)))
 
 (define (generate-page-width)
-	(get-number-property 'total-width page-properties))
-	;;(number->string (cdr (assoc 'total-width page-properties))))
+	(number->string (cdr (assoc 'total-width page-properties))))
 	
 
 ;; define main-heights
@@ -260,73 +310,7 @@
 				
 
 
-;; -----------------------------------------------------------------------------------
-;; -----------------------------------------------------------------------------------
-;; -----------------------------------------------------------------------------------
-;; -------------------------------- HTML CODE ----------------------------------------
-;; -----------------------------------------------------------------------------------
 
-(define page-name #f)
-
-
-(define (set-current-page-name sym)
-	(set! page-name sym)
-	"")
-
-(define (generate-html-frames-begin frame-name use-number-name)
-	(let ((number-str (if use-number-name (build-string "-"
-													(get-number-property 'main-height (get-property page-name main-pages-properties))
-													) "")))
-  	 (build-string
-		"<div id=\"" frame-name number-str "\" class=\"" frame-name "-colors\">" #\newline
-		"<div id=\"" frame-name number-str "-dashed\">" #\newline
-		"<div id=\"" frame-name number-str "-inner\">" #\newline
-         ))
-)
-
-(define (generate-html-frames-end)
-	(build-string
-		"</div>" #\newline
-		"</div>" #\newline
-		"</div>" #\newline
-	)
-)
-
-(define (generate-html-menu)
-	(build-string (generate-html-frames-start 'menu #t))
-		
-		
-)
-
-(define (generate-html-header)
-	(build-string
-		(generate-html-frames-start 'header #t)
-		"<img src="bilder/lappsidan.gif" alt="Lappsidan" />"
-	)
-)
-
-(define (generate-html-head) #f
-)
-
-(define (generate-unusable-menu-li properties)
-	(build-string
-		"<li class=\"unusable-link\">" #\newline
-		(get-property 'link-name (cdr properties)) #\newline
-		"</li>" #\newline
-	))
-		
-
-(define (generate-menu-li properties)
-	(let ((link-name (get-property 'link-name (cdr properties)))
-		  (link-title (get-property 'link-title (cdr properties)))
-		  )
-	(build-string
-		"<li>" #\newline
-		"<a class=\"menu-link\" href=\"" (symbol->string (car properties)) ".html\" title=\"" link-title "\">" #\newline
-		link-name #\newline
-		"</a>" #\newline
-		"</li>" #\newline
-	)))
 
 
 				
