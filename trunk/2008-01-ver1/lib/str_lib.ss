@@ -4,6 +4,9 @@
 			(#\å "&aring;")
 			(#\ä "&auml;")
 			(#\ö "&ouml;")
+			(#\Å "&Aring;")
+			(#\Ä "&Auml;")
+			(#\Ö "&Ouml;")
 			(else (string c))))		
 	(define (handle-arg arg)
       (cond
