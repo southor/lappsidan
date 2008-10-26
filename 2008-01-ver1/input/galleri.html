@@ -19,12 +19,13 @@
 			  (last-filename #f)
 			  (current-filename #f)
 			  (current-long-name #f)
+			  (current-for-sale #f)
 			  (current-i #f)
 			  (current-special-title #f)
 			  (n-photos 0)
 			  (gallery-htmls '())
 			  (generate-gallery-photo-html
-				(lambda (next-filename long-name i special-title)
+				(lambda (next-filename long-name i special-title for-sale)
 					(define (generate-adjent-html-link filename name)
 						;;(display "gen-adj-ht-1") (display #\newline)
 						(if filename
@@ -62,7 +63,15 @@
 									#\newline
 									"</td>" "</tr>" #\newline
 									"<tr>" "<td>" #\newline
-									current-long-name  " nr " current-i #\newline
+									current-long-name  " nr " current-i
+									(if current-for-sale
+										(build-string
+											"	"
+											"<a href=\"../salu.html\" title=\"Till 'Till Salu' sidan\">" #\newline
+											"(Till salu)" #\newline
+											"</a>")
+										"")										
+									#\newline
 									"</td>" "</tr>" #\newline
 									html-links
 									#\newline
@@ -77,6 +86,7 @@
 					(set! last-filename current-filename)
 					(set! current-filename next-filename)
 					(set! current-long-name long-name)
+					(set! current-for-sale for-sale)					
 					(set! current-i i)
 					(set! current-special-title special-title)
 					(set! n-photos (+ n-photos 1))
@@ -92,17 +102,11 @@
 									(output-rec (cdr li)))))
 					(output-rec gallery-htmls)))
 			  (generate-tacke-td
-				(lambda (short-name long-name i j special-title)
+				(lambda (short-name long-name i j special-title for-sale)
 					(let ((filename (build-string short-name i "-bild" j)))
-						(generate-gallery-photo-html filename long-name i special-title)						
-						(build-string
-							"<td>" #\newline
-							"<a href=\"galleri/" filename ".html\" "
-								"title=\"f&ouml;rstora\">" #\newline
-								"<img src=\"galleri-mini/" short-name i "-bild" j ".jpg\" />" #\newline
-							"</a>"
-							"</td>" #\newline
-							))))
+						(generate-gallery-photo-html filename long-name i special-title for-sale)
+						(generate-mini-gallery-td filename)
+							)))
 			  (generate-tacke-tr
 				(lambda (short-name long-name i properties)
 					(define (output-property-special pre-str sym al post-str)
@@ -112,12 +116,14 @@
 						(output-property-special "" sym properties "<br/>"))
 					(define (output-gallery-property-long sym)
 						(output-property-special (output-property-special "" sym gallery-list-properties-define ": ") sym properties "<br/>"))
-					(let ((n (get-property 'number-of-photos properties))
-						  (status (get-property 'status properties)))
+					(let* ((n (get-property 'number-of-photos properties))
+						   (status (get-property 'status properties))
+						   (for-sale (equal? status 'for-sale)))
 						(build-string
 							"<tr>" #\newline
 							(do ((j 1 (+ j 1))
-								(res '() (cons (generate-tacke-td short-name long-name i j (get-property 'special-title properties)) res)))
+								(res '() (cons (generate-tacke-td short-name long-name i j (get-property 'special-title properties) for-sale)
+												res)))
 								((> j n) (reverse res)))
 							"<td>" #\newline
 							long-name " " i "<br/>"
@@ -126,7 +132,7 @@
 							(output-gallery-property-short 'size)
 							(output-gallery-property-short 'year)
 							(get-property status patchwork-status-text)
-							(if (equal? status 'for-sale)
+							(if for-sale
 								(build-string
 									" "
 									(get-property 'price properties)
@@ -152,7 +158,7 @@
 		(do
 			((li gallery-list (cdr li))
 			 (res '() (cons (generate-trs (car (car li)) (cadr (car li)) (caddr (car li))) res)))
-			((null? li) (begin (generate-gallery-photo-html #f "" 0 #f)
+			((null? li) (begin (generate-gallery-photo-html #f "" 0 #f #f)
 								(output-gallery-html-files)
 								(apply build-string (reverse res)))))
 		))
