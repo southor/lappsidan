@@ -329,8 +329,15 @@
 	)))
 
 
-				
-
+(define (generate-mini-gallery-td filename)
+	(build-string
+		"<td>" #\newline
+		"<a href=\"galleri/" filename ".html\" "
+			"title=\"f&ouml;rstora\">" #\newline
+			"<img src=\"galleri-mini/" filename ".jpg\" />" #\newline
+		"</a>"
+		"</td>" #\newline
+		))
 
 
 
