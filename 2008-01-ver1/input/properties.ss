@@ -219,7 +219,7 @@
 		 (status . private)
 		 (photo . "J. S&ouml;derberg")
 		 )
-		((number-of-photos . 2)			;; tacke 17
+		((number-of-photos . 1)			;; tacke 17
 		 (name . "Spiraler")
 		 (pattern . "Blockhus, modifierat")
 		 (size . "100*150 cm")
