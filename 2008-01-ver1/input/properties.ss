@@ -211,10 +211,18 @@
 		 (status . private)
 		 (photo . "J. S&ouml;derberg")
 		)
-		((number-of-photos . 1)			;; tacke 16
+		((number-of-photos . 2)			;; tacke 16
 		 (name . "Vinternatt")
 		 (pattern . "Moses korg")
 		 (size . "195*155 cm")
+		 (year . "2008")
+		 (status . private)
+		 (photo . "J. S&ouml;derberg")
+		 )
+		((number-of-photos . 2)			;; tacke 17
+		 (name . "Spiraler")
+		 (pattern . "Blockhus, modifierat")
+		 (size . "100*150 cm")
 		 (year . "2008")
 		 (status . private)
 		 (photo . "J. S&ouml;derberg")
