@@ -49,7 +49,7 @@
 	(start . 		((main-height . 1200)	(link-name . "startsidan")			(link-title . "startsidan")))
 	(historia . 	((main-height . 800)	(link-name . "historia")			(link-title . "lappt&auml;ckets historia")))	
 	(tillverkning . ((main-height . 3000)	(link-name . "tillverkning")		(link-title . "tillverkningsprocessen")))	
-	(galleri . 		((main-height . 3800)	(link-name . "galleri")				(link-title . "exempelt&auml;cken")))	
+	(galleri . 		((main-height . 4200)	(link-name . "galleri")				(link-title . "exempelt&auml;cken")))	
 	(salu . 		((main-height . 1400)	(link-name . "till salu")			(link-title . "lappt&auml;cken till salu")))	
 	(bestallning . 	((main-height . 800)	(link-name . "best&auml;llning")	(link-title . "best&auml;llning av lappt&auml;cken")))	
 	(kontakt . 		((main-height . 800)	(link-name . "kontakt")				(link-title . "e-post")))	
