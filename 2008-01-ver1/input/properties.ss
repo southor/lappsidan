@@ -203,7 +203,7 @@
 		 (price2 . "800 kr")
 		 (photo . "J. S&ouml;derberg")
 		)
-		((number-of-photos . 1)			;; tacke 15
+		((number-of-photos . 2)			;; tacke 15
 		 (name . "Äntligen")
 		 (pattern . "Hexagon")
 		 (size . "230*165 cm")
