@@ -226,6 +226,14 @@
 		 (year . "2008")
 		 (status . private)
 		 (photo . "J. S&ouml;derberg")
+		 )
+		((number-of-photos . 1)			;; tacke 18
+		 (name . "SAbrines täcke")
+		 (pattern . "Hexagon")
+		 (size . "65*55 cm")
+		 (year . "2009")
+		 (status . private)
+		 (photo . "J. S&ouml;derberg")
 		)
 		))
 	  ("exempel" "Exempel" (		
