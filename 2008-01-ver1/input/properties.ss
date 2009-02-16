@@ -237,7 +237,7 @@
 		)
 		((number-of-photos . 2)			;; tacke 19
 		 (name . "Selmas täcke")
-		 (pattern . "Hexagon")
+		 (pattern . "Jakobs stege")
 		 (size . "70*50 cm")
 		 (year . "2006")
 		 (status . private)
