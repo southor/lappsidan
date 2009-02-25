@@ -10,6 +10,11 @@
 
 
 (define (process-all input-folder output-folder preprocess-file-types move-file-types input-ss-file)
+	(define (my-open-output-file filename)
+			(open-output-file (filename-to-minor-extension filename))
+			;;(open-output-file filename)
+			)
+	;;(define my-open-output-file open-output-file)
 	(define preprocess-file-generate  
         (let ()
             (load input-ss-file) ;; to be availible at evaluation
@@ -27,7 +32,7 @@
 							(display total-filename)
 							(display " ")
 							(if (find-file total-filename) (delete-file total-filename))
-							(let ((output (open-output-file total-filename)))
+							(let ((output (my-open-output-file total-filename)))
 								(display str output)
 								(close-output-port output)
 								))))
@@ -66,7 +71,7 @@
 ;;				;;(display "	(preprocessing) writing to file: ") (display output-file) (newline)
 ;;				
 ;;				(let ((input (open-input-file input-file))
-;;						(output (open-output-file output-file))
+;;						(output (my-open-output-file output-file))
 ;;						(get-current-path (lambda () input-path)) ;; to be availible at evaluation
 ;;						(get-current-filename (lambda () input-file)) ;; to be availible at evaluation
 ;;						)
@@ -97,7 +102,7 @@
 		;;(display "	(moving) writing to file: ") (display output-file) (newline)
 	
 		(let ((input (open-input-file input-file))
-				(output (open-output-file output-file))
+				(output (my-open-output-file output-file))
 				)
 			(do ((char (read-char input) (read-char input)))
 					((eof-object? char) 'ok)
@@ -160,7 +165,7 @@
 				
 				(display "	(preprocessing) writing to file: ") (display output-file) (newline)
 				
-				(let ((output (open-output-file output-file)))
+				(let ((output (my-open-output-file output-file)))
                                     ;;(display "okej0")
 									(display " ")
 									(display output-path)

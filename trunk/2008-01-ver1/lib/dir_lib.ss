@@ -27,6 +27,15 @@
 
 (define get-filename-extension path-extension)
 
+(define (filename-to-minor-extension filename)
+	(define (filename-to-minor-extension-rec r-lst r-ext)
+		(if (null? r-ext)
+			r-lst
+			(cons (char-downcase (car r-ext)) (filename-to-minor-extension-rec (cdr r-lst) (cdr r-ext)))))
+	(list->string
+	  (reverse
+		(filename-to-minor-extension-rec (reverse (string->list filename)) (reverse (string->list (get-filename-extension filename)))))))
+
 (define (path-append . paths)	
 	
 	(define (get-first-char str) (string-ref str 0))
