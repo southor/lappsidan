@@ -46,7 +46,7 @@
 ;; height - öka denna om innehållet inte får plats
 (define main-pages-properties
 	'(
-	(start . 		((main-height . 1200)	(link-name . "startsidan")			(link-title . "startsidan")))
+	(index . 		((main-height . 1200)	(link-name . "startsidan")			(link-title . "startsidan")))
 	(historia . 	((main-height . 800)	(link-name . "historia")			(link-title . "lappt&auml;ckets historia")))	
 	(tillverkning . ((main-height . 3000)	(link-name . "tillverkning")		(link-title . "tillverkningsprocessen")))	
 	(galleri . 		((main-height . 5000)	(link-name . "galleri")				(link-title . "exempelt&auml;cken")))	
