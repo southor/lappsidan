@@ -174,7 +174,7 @@
 		 (pattern . "Tegelv&auml;gg")
 		 (size . "180*140 cm")
 		 (year . "2007")
-		 (status . private)
+		 (status . sold)
 		 (photo . "U. Nyl&eacute;n")
 		 )
 		((number-of-photos . 1)			;; tacke 12
