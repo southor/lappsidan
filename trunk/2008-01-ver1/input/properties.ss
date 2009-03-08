@@ -228,7 +228,7 @@
 		 (status . sold)
 		 (photo . "J. S&ouml;derberg")
 		 )
-		((number-of-photos . 1)			;; tacke 18
+		((number-of-photos . 2)			;; tacke 18
 		 (name . "Sabrines täcke")
 		 (pattern . "Hexagon")
 		 (size . "65*55 cm")
