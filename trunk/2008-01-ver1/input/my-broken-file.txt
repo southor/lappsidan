@@ -1,0 +1,152 @@
+<<<<<< .mine
+
+
+
+##((set-current-page-name 'salu))
+
+##((import-file "page-begin.stub"))
+
+##((generate-html-frames-begin "main" #t))
+
+				<h2>
+					Lappt&auml;cken till salu
+				</h2>
+				<br />
+				<br />
+
+##((let* ((generate-tacke-tr
+			
+			(lambda (short-name long-name i properties)
+				(if (eqv? (get-property 'status properties) 'for-sale)
+					(let ((price (get-property 'price properties)))
+						(build-string
+							"<tr>" #\newline
+							"<td>" #\newline
+							"<a href=\"galleri/" (build-string short-name i "-bild" 1 ".html") "\" title=\"Till galleriet\">" #\newline
+								long-name " nr " i ":" #\newline
+							"</a>" #\newline
+							"<table>" #\newline
+							"<tr>" #\newline
+							"<td></td>" #\newline
+							"<td class=\"field\">" 
+								(get-property 'name gallery-list-properties-define) ": <br />"
+								(get-property 'pattern gallery-list-properties-define) ": <br />"
+								(get-property 'price gallery-list-properties-define)
+								": </td>" #\newline
+							"<td class=\"value\">" 
+								(get-property 'name properties) "<br />"
+								(get-property 'pattern properties) "<br />"
+								(if price price (get-property 'price2 properties))
+								"</td>" #\newline
+								"</tr>" #\newline
+							"</table>" #\newline
+							"</td>" #\newline
+							"</tr>" #\newline
+							#\newline
+						))
+					"")))
+		  (generate-trs
+			(lambda (short-name long-name lst)
+				(do
+					((i 1 (+ i 1))
+					 (li lst (cdr li))
+					 (res '() (cons (generate-tacke-tr short-name long-name i (car li)) res)))
+					 ((null? li) (apply build-string (reverse res)))))))
+	(do
+		((li gallery-list (cdr li))
+		(res '() (cons (generate-trs (car (car li)) (cadr (car li)) (caddr (car li))) res)))
+		((null? li) (apply build-string (reverse res))))))
+
+##((generate-html-frames-end))
+
+
+	
+##((import-file "page-end.stub"))=======
+
+
+
+##((set-current-page-name 'salu))
+
+##((import-file "page-begin.stub"))
+
+##((generate-html-frames-begin "main" #t))
+
+				<br />
+				<h2>
+					Lappt&auml;cken till salu
+				</h2>
+				<br />
+				<br />
+
+##((let* ((generate-tacke-td
+				(lambda (short-name i j)
+					(let ((filename (build-string short-name i "-bild" j)))
+						(generate-mini-gallery-td filename)
+							)))
+		  (generate-tacke-tr
+			
+			(lambda (short-name long-name i properties)
+				(if (eqv? (get-property 'status properties) 'for-sale)
+					(let ((price (get-property 'price properties))
+						  (price1 (get-property 'price1 properties))
+						  (price2 (get-property 'price2 properties)))
+						(build-string							
+							"<tr>" #\newline
+							"<td>" #\newline
+							;;"<a href=\"galleri/" (build-string short-name i "-bild" 1 ".html") "\" title=\"Till galleriet\">" #\newline
+								long-name " nr " i ":" #\newline
+							;;"</a>" #\newline
+							"<table>" #\newline
+							"<tr>" #\newline
+							"<td></td>" #\newline
+							"<td class=\"field\">" 
+								(get-property 'name gallery-list-properties-define) ": <br />" #\newline
+								;;(get-property 'pattern gallery-list-properties-define) ": <br />" #\newline
+								(get-property 'size gallery-list-properties-define) ": <br />" #\newline
+								(if price
+									(build-string (get-property 'price gallery-list-properties-define) ": <br />" #\newline)
+									(build-string
+										(if price1 (build-string (get-property 'price1 gallery-list-properties-define) ": <br />" #\newline) "")
+										(if price2 (build-string (get-property 'price2 gallery-list-properties-define) ": <br />" #\newline) "")))
+												
+								"</td>" #\newline
+							"<td class=\"value\">" 
+								(get-property 'name properties) "<br />"  #\newline
+								;;(get-property 'pattern properties) "<br />"  #\newline
+								(get-property 'size properties) "<br />"  #\newline
+								(if price
+									(build-string price "<br />"  #\newline)
+									(build-string
+										(if price1 (build-string price1 "<br />"  #\newline) "")
+										(if price2 (build-string price2 "<br />"  #\newline) "")))
+								"</td>" #\newline
+							"</tr>" #\newline
+							"</table>" #\newline
+							"</td>" #\newline
+							
+							(generate-tacke-td short-name i (get-property 'number-of-photos properties))
+							
+							"</tr>" #\newline
+							#\newline
+						))
+					"")))
+		  (generate-trs
+			(lambda (short-name long-name lst)				
+				(do
+					((i 1 (+ i 1))
+					 (li lst (cdr li))
+					 (res '() (cons (generate-tacke-tr short-name long-name i (car li)) res)))
+					 ((null? li) (apply build-string (reverse res)))))))
+	(build-string
+		"<table>" #\newline
+		(do
+			((li gallery-list (cdr li))
+			(res '() (cons (generate-trs (car (car li)) (cadr (car li)) (caddr (car li))) res)))
+			((null? li) (apply build-string (reverse res))))
+		"</table>" #\newline)))
+
+##((generate-html-frames-end))
+
+
+	
+##((import-file "page-end.stub"))>>>>>>> .r35

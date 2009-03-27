@@ -1,0 +1,127 @@
+Petite Chez Scheme Version 7.4
+Copyright (c) 1985-2007 Cadence Research Systems
+
+----- SSWPG Processer ----
+input folder: input
+output folder: output
+input scheme file: input\page.ss
+preprocess-file-types: (css html)
+move-file-types: (jpg gif pdf)
+-- processing start --
+processing file: input\tillverkning.html
+	(preprocessing) writing to file: output\tillverkning.html
+ output\ processing file: input\start.html
+	(preprocessing) writing to file: output\start.html
+ output\ processing file: input\salu.html
+	(preprocessing) writing to file: output\salu.html
+ output\ moving file: input\priser.pdf
+processing file: input\page.css
+	(preprocessing) writing to file: output\page.css
+ output\ generate-page-css-frames start
+generate-page-css-frames 2
+processing file: input\kontakt.html
+	(preprocessing) writing to file: output\kontakt.html
+ output\ processing file: input\historia.html
+	(preprocessing) writing to file: output\historia.html
+ output\ processing file: input\galleri.html
+	(preprocessing) writing to file: output\galleri.html
+ output\  output\galleri/exempel1-bild1.html  output\galleri/tacke17-bild1.html  output\galleri/tacke16-bild2.html  output\galleri/tacke16-bild1.html  output\galleri/tacke15-bild2.html  output\galleri/tacke15-bild1.html  output\galleri/tacke14-bild1.html  output\galleri/tacke13-bild2.html  output\galleri/tacke13-bild1.html  output\galleri/tacke12-bild1.html  output\galleri/tacke11-bild2.html  output\galleri/tacke11-bild1.html  output\galleri/tacke10-bild2.html  output\galleri/tacke10-bild1.html  output\galleri/tacke9-bild2.html  output\galleri/tacke9-bild1.html  output\galleri/tacke8-bild2.html  output\galleri/tacke8-bild1.html  output\galleri/tacke7-bild2.html  output\galleri/tacke7-bild1.html  output\galleri/tacke6-bild2.html  output\galleri/tacke6-bild1.html  output\galleri/tacke5-bild2.html  output\galleri/tacke5-bild1.html  output\galleri/tacke4-bild2.html  output\galleri/tacke4-bild1.html  output\galleri/tacke3-bild2.html  output\galleri/tacke3-bild1.html  output\galleri/tacke2-bild2.html  output\galleri/tacke2-bild1.html  output\galleri/tacke1-bild2.html  output\galleri/tacke1-bild1.html processing file: input\bestallning.html
+	(preprocessing) writing to file: output\bestallning.html
+ output\ processing file: input\all.css
+	(preprocessing) writing to file: output\all.css
+ output\ moving file: input\galleri-mini\tacke9-bild2.jpg
+moving file: input\galleri-mini\tacke9-bild1.jpg
+moving file: input\galleri-mini\tacke8-bild2.jpg
+moving file: input\galleri-mini\tacke8-bild1.jpg
+moving file: input\galleri-mini\tacke7-bild2.jpg
+moving file: input\galleri-mini\tacke7-bild1.jpg
+moving file: input\galleri-mini\tacke6-bild2.jpg
+moving file: input\galleri-mini\tacke6-bild1.jpg
+moving file: input\galleri-mini\tacke5-bild2.jpg
+moving file: input\galleri-mini\tacke5-bild1.jpg
+moving file: input\galleri-mini\tacke4-bild2.jpg
+moving file: input\galleri-mini\tacke4-bild1.jpg
+moving file: input\galleri-mini\tacke3-bild2.jpg
+moving file: input\galleri-mini\tacke3-bild1.jpg
+moving file: input\galleri-mini\tacke2-bild2.jpg
+moving file: input\galleri-mini\tacke2-bild1.jpg
+moving file: input\galleri-mini\tacke17-bild1.jpg
+moving file: input\galleri-mini\tacke16-bild2.jpg
+moving file: input\galleri-mini\tacke16-bild1.jpg
+moving file: input\galleri-mini\tacke15-bild2.jpg
+moving file: input\galleri-mini\tacke15-bild1.jpg
+moving file: input\galleri-mini\tacke14-bild1.jpg
+moving file: input\galleri-mini\tacke13-bild2.jpg
+moving file: input\galleri-mini\tacke13-bild1.jpg
+moving file: input\galleri-mini\tacke12-bild1.jpg
+moving file: input\galleri-mini\tacke11-bild2.jpg
+moving file: input\galleri-mini\tacke11-bild1.jpg
+moving file: input\galleri-mini\tacke10-bild2.jpg
+moving file: input\galleri-mini\tacke10-bild1.jpg
+moving file: input\galleri-mini\tacke1-bild2.jpg
+moving file: input\galleri-mini\tacke1-bild1.jpg
+moving file: input\galleri-mini\exempel1-bild1.jpg
+moving file: input\galleri\tacke9-bild2.jpg
+moving file: input\galleri\tacke9-bild1.jpg
+moving file: input\galleri\tacke8-bild2.jpg
+moving file: input\galleri\tacke8-bild1.jpg
+moving file: input\galleri\tacke7-bild2.jpg
+moving file: input\galleri\tacke7-bild1.jpg
+moving file: input\galleri\tacke6-bild2.jpg
+moving file: input\galleri\tacke6-bild1.jpg
+moving file: input\galleri\tacke5-bild2.jpg
+moving file: input\galleri\tacke5-bild1.jpg
+moving file: input\galleri\tacke4-bild2.jpg
+moving file: input\galleri\tacke4-bild1.jpg
+moving file: input\galleri\tacke3-bild2.jpg
+moving file: input\galleri\tacke3-bild1.jpg
+moving file: input\galleri\tacke2-bild2.jpg
+moving file: input\galleri\tacke2-bild1.jpg
+moving file: input\galleri\tacke17-bild1.JPG
+moving file: input\galleri\tacke16-bild2.JPG
+moving file: input\galleri\tacke16-bild1.jpg
+moving file: input\galleri\tacke15-bild2.JPG
+moving file: input\galleri\tacke15-bild1.jpg
+moving file: input\galleri\tacke14-bild1.jpg
+moving file: input\galleri\tacke13-bild2.jpg
+moving file: input\galleri\tacke13-bild1.jpg
+moving file: input\galleri\tacke12-bild1.jpg
+moving file: input\galleri\tacke11-bild2.jpg
+moving file: input\galleri\tacke11-bild1.jpg
+moving file: input\galleri\tacke10-bild2.jpg
+moving file: input\galleri\tacke10-bild1.jpg
+moving file: input\galleri\tacke1-bild2.jpg
+moving file: input\galleri\tacke1-bild1.jpg
+processing file: input\galleri\picture.css
+	(preprocessing) writing to file: output\galleri\picture.css
+ output\galleri moving file: input\galleri\exempel1-bild1.jpg
+moving file: input\bilder\tyger1.jpg
+moving file: input\bilder\sy_rutor.jpg
+moving file: input\bilder\sy_ihop.jpg
+moving file: input\bilder\stickstol_hela.jpg
+moving file: input\bilder\stickstol_1.jpg
+moving file: input\bilder\sparehjul.jpg
+moving file: input\bilder\skara_klippa.jpg
+moving file: input\bilder\provlagga_ex_2.jpg
+moving file: input\bilder\provlagga_ex_1.jpg
+moving file: input\bilder\pressat.jpg
+moving file: input\bilder\presentation2.jpg
+moving file: input\bilder\presentation1.jpg
+moving file: input\bilder\monster_vass.jpg
+moving file: input\bilder\monster_moes.jpg
+moving file: input\bilder\monster_972.jpg
+moving file: input\bilder\lappsidan.gif
+moving file: input\bilder\lappbakrund2.jpg
+moving file: input\bilder\lappbakrund.jpg
+moving file: input\bilder\fasta-stor.jpg
+moving file: input\bilder\fasta-nara.jpg
+moving file: input\bestallning\typ3_spiral.jpg
+moving file: input\bestallning\typ3_ruckl972.jpg
+moving file: input\bestallning\typ3_blockhus.jpg
+moving file: input\bestallning\typ2_xblocks.jpg
+moving file: input\bestallning\typ2_kuber.jpg
+moving file: input\bestallning\typ2_hex.jpg
+moving file: input\bestallning\typ1_tegel.jpg
+moving file: input\bestallning\typ1_rutor.jpg
+moving file: input\bestallning\typ1_rucklvass.jpg
+> 

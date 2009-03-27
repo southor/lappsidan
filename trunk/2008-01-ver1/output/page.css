@@ -1,0 +1,468 @@
+
+/* -------------------------- */
+/* --------- wrapper -------- */
+/* -------------------------- */
+
+body {
+	text-align: center;		/* just to deal with pre ie7 aligning bug */
+	background-image: url("bilder/lappbakrund.jpg");
+}
+
+#wrapper {
+	position: relative; 
+	width: 752px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+/* -------------------------- */
+/* ------- link styles ------ */
+/* -------------------------- */
+ 
+ a.menu-link:link 		{color: #aaff00; text-decoration: none} 
+ a.menu-link:visited	{color: #ffaa22; text-decoration: none}
+ a.menu-link:hover 		{color: #0000aa; text-decoration: underline}  
+ a.menu-link:active 	{color: #0000aa; text-decoration: underline}
+
+/* -------------------------- */
+/* ----------- tags --------- */
+/* -------------------------- */
+
+h1 { text-align: center; }
+h2 { text-align: center; }
+h3 { text-align: center; }
+
+/* -------------------------- */
+/* --------- "frames" ------- */
+/* -------------------------- */
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* ------------------- header ---------------------- */
+/* ------------------------------------------------- */
+
+.header-colors {
+	background: #222544;
+	color: #eeeee6;
+}
+
+#header {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 752px;
+	height: 80px;
+}
+
+#header-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 744px;
+	height: 72px;
+
+	border: #eeeee6 2px dashed;
+}
+
+#header-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 740px;
+	height: 68px;
+	text-align: center;
+}
+
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* -------------------- menu ----------------------- */
+/* ------------------------------------------------- */
+
+.menu-colors {
+	background: #88aabb;
+	color: #000000;
+}
+
+/* -------------------------- */
+/* ---------- 800 ---------- */
+/* -------------------------- */
+
+#menu-800 {
+	position: absolute;
+	left: 0px;
+	top: 84px;
+	width: 148px;
+	height: 800px;
+}
+
+#menu-800-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 140px;
+	height: 792px;
+
+	border: #222544 2px dashed;
+}
+
+#menu-800-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 136px;
+	height: 788px;
+}
+
+/* -------------------------- */
+/* ---------- 2000 ---------- */
+/* -------------------------- */
+
+#menu-2000 {
+	position: absolute;
+	left: 0px;
+	top: 84px;
+	width: 148px;
+	height: 2000px;
+}
+
+#menu-2000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 140px;
+	height: 1992px;
+
+	border: #222544 2px dashed;
+}
+
+#menu-2000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 136px;
+	height: 1988px;
+}
+
+/* -------------------------- */
+/* ---------- 3000 ---------- */
+/* -------------------------- */
+
+#menu-3000 {
+	position: absolute;
+	left: 0px;
+	top: 84px;
+	width: 148px;
+	height: 3000px;
+}
+
+#menu-3000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 140px;
+	height: 2992px;
+
+	border: #222544 2px dashed;
+}
+
+#menu-3000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 136px;
+	height: 2988px;
+}
+
+/* -------------------------- */
+/* ---------- 5000 ---------- */
+/* -------------------------- */
+
+#menu-5000 {
+	position: absolute;
+	left: 0px;
+	top: 84px;
+	width: 148px;
+	height: 5000px;
+}
+
+#menu-5000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 140px;
+	height: 4992px;
+
+	border: #222544 2px dashed;
+}
+
+#menu-5000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 136px;
+	height: 4988px;
+}
+
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* -------------------- main ----------------------- */
+/* ------------------------------------------------- */
+
+.main-colors {
+	background: #eeeee6;
+	color: #000000;
+}
+
+/* -------------------------- */
+/* ---------- 800 ---------- */
+/* -------------------------- */
+
+#main-800 {
+	position: absolute;
+	left: 152px;
+	top: 84px;
+	width: 600px;
+	height: 800px;
+}
+
+#main-800-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 592px;
+	height: 792px;
+
+	border: #88aabb 2px dashed;
+}
+
+#main-800-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 588px;
+	height: 788px;
+}
+
+/* -------------------------- */
+/* ---------- 2000 ---------- */
+/* -------------------------- */
+
+#main-2000 {
+	position: absolute;
+	left: 152px;
+	top: 84px;
+	width: 600px;
+	height: 2000px;
+}
+
+#main-2000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 592px;
+	height: 1992px;
+
+	border: #88aabb 2px dashed;
+}
+
+#main-2000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 588px;
+	height: 1988px;
+}
+
+/* -------------------------- */
+/* ---------- 3000 ---------- */
+/* -------------------------- */
+
+#main-3000 {
+	position: absolute;
+	left: 152px;
+	top: 84px;
+	width: 600px;
+	height: 3000px;
+}
+
+#main-3000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 592px;
+	height: 2992px;
+
+	border: #88aabb 2px dashed;
+}
+
+#main-3000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 588px;
+	height: 2988px;
+}
+
+/* -------------------------- */
+/* ---------- 5000 ---------- */
+/* -------------------------- */
+
+#main-5000 {
+	position: absolute;
+	left: 152px;
+	top: 84px;
+	width: 600px;
+	height: 5000px;
+}
+
+#main-5000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 592px;
+	height: 4992px;
+
+	border: #88aabb 2px dashed;
+}
+
+#main-5000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 588px;
+	height: 4988px;
+}
+
+
+/* ------------------------------------------------- */
+/* ------------------------------------------------- */
+/* ------------------- footer ---------------------- */
+/* ------------------------------------------------- */
+
+.footer-colors {
+	background: #335533;
+	color: #000000;
+}
+
+/* -------------------------- */
+/* ---------- 800 ---------- */
+/* -------------------------- */
+
+#footer-800 {
+	position: absolute;
+	left: 0px;
+	top: 888px;
+	width: 752px;
+	height: 64px;
+}
+
+#footer-800-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 744px;
+	height: 56px;
+
+	border: #eeeee6 2px dashed;
+}
+
+#footer-800-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 740px;
+	height: 52px;
+}
+
+/* -------------------------- */
+/* ---------- 2000 ---------- */
+/* -------------------------- */
+
+#footer-2000 {
+	position: absolute;
+	left: 0px;
+	top: 2088px;
+	width: 752px;
+	height: 64px;
+}
+
+#footer-2000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 744px;
+	height: 56px;
+
+	border: #eeeee6 2px dashed;
+}
+
+#footer-2000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 740px;
+	height: 52px;
+}
+
+/* -------------------------- */
+/* ---------- 3000 ---------- */
+/* -------------------------- */
+
+#footer-3000 {
+	position: absolute;
+	left: 0px;
+	top: 3088px;
+	width: 752px;
+	height: 64px;
+}
+
+#footer-3000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 744px;
+	height: 56px;
+
+	border: #eeeee6 2px dashed;
+}
+
+#footer-3000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 740px;
+	height: 52px;
+}
+
+/* -------------------------- */
+/* ---------- 5000 ---------- */
+/* -------------------------- */
+
+#footer-5000 {
+	position: absolute;
+	left: 0px;
+	top: 5088px;
+	width: 752px;
+	height: 64px;
+}
+
+#footer-5000-dashed {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 744px;
+	height: 56px;
+
+	border: #eeeee6 2px dashed;
+}
+
+#footer-5000-inner {
+	position: relative;
+	left: 2px;
+	top: 2px;
+	width: 740px;
+	height: 52px;
+}
+
