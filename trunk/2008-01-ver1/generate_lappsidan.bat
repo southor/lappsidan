@@ -1,1 +1,1 @@
-C:\"Program Files"\"Chez Scheme Version 7.4"\bin\i3nt\petite.exe generate_lappsidan.ss > log.txt
+C:\Program\"Chez Scheme Version 7.4d"\bin\i3nt\petite.exe generate_lappsidan.ss > log.txt
