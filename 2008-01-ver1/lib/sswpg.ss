@@ -190,5 +190,6 @@
 	;;(display " test2") (newline)
 	;;(display (memv "css" preprocess-file-types))
 	(process-folder preprocess-move-action)
+	(display "-- processing finished --") (newline)
   )
 
