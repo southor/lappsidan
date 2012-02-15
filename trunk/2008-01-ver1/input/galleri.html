@@ -5,165 +5,167 @@
 
 ##((generate-html-frames-begin "main" #t))
 
-	<br />
-	<h2>
-		Galleri.
-		<br />
-	</h2>
-	<br />
+<br />
+<h2>
+	Galleri<br />
+</h2>
+<br />
 	
-	<table>
+<table>
 
 
-	##((let* (
-			  (last-filename #f)
-			  (current-filename #f)
-			  (current-long-name #f)
-			  (current-for-sale #f)
-			  (current-i #f)
-			  (current-special-title #f)
-			  (n-photos 0)
-			  (gallery-htmls '())
-			  (generate-gallery-photo-html
-				(lambda (next-filename long-name i special-title for-sale)
-					(define (generate-adjent-html-link filename name)
-						;;(display "gen-adj-ht-1") (display #\newline)
-						(if filename
-							(build-string
-								"<a href=\""
-								filename
-								".html\" title=\"" name " foto\">" #\newline
-								name #\newline
-								"</a>" #\newline)
-							name))
-					;;(display "gen-gall-ht-1") (display #\newline)
-					(if current-filename
-						(let* ((html-links
-								(build-string									
-									"<tr>" "<td class=\"unusable-link\">" #\newline
-									(generate-adjent-html-link last-filename "F&ouml;reg&aring;ende")
-									","
-									(generate-adjent-html-link next-filename "N&auml;sta")
-									","
-									"<a href=\"../galleri.html\" title=\"Tillbaka till galleriet\">" #\newline
-									"Galleri" #\newline
-									"</a>" #\newline
-									"</td> </tr>" #\newline)
-								)
-							   (html-text1
-								(build-string
-									(import-file "common-begin1.stub")
-									"picture.css"
-									(import-file "common-begin2.stub")
-									"<table>"
-									"<tr>" "<td>"
-										"Bild " n-photos " av "))
-							  (html-text2
-								(build-string
-									#\newline
-									"</td>" "</tr>" #\newline
-									"<tr>" "<td>" #\newline
-									current-long-name  " nr " current-i
-									(if current-for-sale
-										(build-string
-											"	"
-											"<a href=\"../salu.html\" title=\"Till 'Till Salu' sidan\">" #\newline
-											"(Till salu)" #\newline
-											"</a>")
-										"")										
-									#\newline
-									"</td>" "</tr>" #\newline
-									html-links
-									#\newline
-									"<tr>" "<td>" #\newline
-									"<img src=\"" current-filename ".jpg\" alt=\"Lappt&auml;cke\" />" #\newline
-									"</td> </tr>" #\newline
-									#\newline
-									html-links
-									"</table>" #\newline
-									(import-file "common-end.stub"))))
-							(set! gallery-htmls (cons (list current-filename html-text1 html-text2) gallery-htmls))))
-					(set! last-filename current-filename)
-					(set! current-filename next-filename)
-					(set! current-long-name long-name)
-					(set! current-for-sale for-sale)					
-					(set! current-i i)
-					(set! current-special-title special-title)
-					(set! n-photos (+ n-photos 1))
-					))
-			  (output-gallery-html-files
-				(lambda ()
-					(define (output-rec li)
-							(if (not (null? li))
-								(begin
-									(output-file
-										(build-string "galleri/" (caar li) ".html")
-										(build-string (cadar li) (- n-photos 1) (caddar li)))
-									(output-rec (cdr li)))))
-					(output-rec gallery-htmls)))
-			  (generate-tacke-td
-				(lambda (short-name long-name i j special-title for-sale)
-					(let ((filename (build-string short-name i "-bild" j)))
-						(generate-gallery-photo-html filename long-name i special-title for-sale)
-						(generate-mini-gallery-td filename)
-							)))
-			  (generate-tacke-tr
-				(lambda (short-name long-name i properties)
-					(define (output-property-special pre-str sym al post-str)
-						(let ((res (get-property sym al)))
-							(if res (build-string pre-str res post-str) "")))
-					(define (output-gallery-property-short sym)
-						(output-property-special "" sym properties "<br/>"))
-					(define (output-gallery-property-long sym)
-						(output-property-special (output-property-special "" sym gallery-list-properties-define ": ") sym properties "<br/>"))
-					(let* ((n (get-property 'number-of-photos properties))
-						   (status (get-property 'status properties))
-						   (for-sale (equal? status 'for-sale)))
+##((let* (
+		  (last-filename #f)
+		  (current-filename #f)
+		  (current-long-name #f)
+		  (current-for-sale #f)
+		  (current-i #f)
+		  (current-special-title #f)
+		  (n-photos 0)
+		  (gallery-htmls '())
+		  (generate-gallery-photo-html
+			(lambda (next-filename long-name i special-title for-sale)
+				(define (generate-adjent-html-link filename name)
+					;;(display "gen-adj-ht-1") (display #\newline)
+					(if filename
 						(build-string
-							"<tr>" #\newline
-							(do ((j 1 (+ j 1))
-								(res '() (cons (generate-tacke-td short-name long-name i j (get-property 'special-title properties) for-sale)
-												res)))
-								((> j n) (reverse res)))
-							"<td>" #\newline
-							long-name " " i "<br/>"
-							(output-gallery-property-short 'name)
-							(output-gallery-property-short 'pattern)
-							(output-gallery-property-short 'size)
-							(output-gallery-property-short 'year)
-							(get-property status patchwork-status-text)
-							(if for-sale
-								(build-string
-									" "
-									(get-property 'price properties)
-									"<br/>"
-									"  " (output-gallery-property-long 'price1)
-									"  " (output-gallery-property-long 'price2))
+							"<a href=\""
+							filename
+							".html\" title=\"" name " foto\">" #\newline
+							name #\newline
+							"</a>" #\newline)
+						name))
+				;;(display "gen-gall-ht-1") (display #\newline)
+				(if current-filename
+					(let* ((html-links
+							(build-string									
+								"<tr>" "<td class=\"unusable-link\">" #\newline
+								(generate-adjent-html-link last-filename "F&ouml;reg&aring;ende")
+								","
+								(generate-adjent-html-link next-filename "N&auml;sta")
+								","
+								"<a href=\"../galleri.html\" title=\"Tillbaka till galleriet\">" #\newline
+								"Galleri" #\newline
+								"</a>" #\newline
+								"</td> </tr>" #\newline)
+							)
+						   (html-text1
+							(build-string
+								(import-file "common-begin1.stub")
+								"picture.css"
+								(import-file "common-begin2.stub")
+								"<table>"
+								"<tr>" "<td>"
+									"Bild " n-photos " av "))
+						  (html-text2
+							(build-string
+								#\newline
+								"</td>" "</tr>" #\newline
+								"<tr>" "<td>" #\newline
+								current-long-name  " nr " current-i
+								(if current-for-sale
+									(build-string
+										"	"
+										"<a href=\"../salu.html\" title=\"Till 'Till Salu' sidan\">" #\newline
+										"(Till salu)" #\newline
+										"</a>")
+									"")										
+								#\newline
+								"</td>" "</tr>" #\newline
+								html-links
+								#\newline
+								"<tr>" "<td>" #\newline
+								"<img src=\"" current-filename ".jpg\" alt=\"Lappt&auml;cke\" />" #\newline
+								"</td> </tr>" #\newline
+								#\newline
+								html-links
+								"</table>" #\newline
+								(import-file "common-end.stub"))))
+						(set! gallery-htmls (cons (list current-filename html-text1 html-text2) gallery-htmls))))
+				(set! last-filename current-filename)
+				(set! current-filename next-filename)
+				(set! current-long-name long-name)
+				(set! current-for-sale for-sale)					
+				(set! current-i i)
+				(set! current-special-title special-title)
+				(set! n-photos (+ n-photos 1))
+				))
+		  (output-gallery-html-files
+			(lambda ()
+				(define (output-rec li)
+						(if (not (null? li))
+							(begin
+								(output-file
+									(build-string "galleri/" (caar li) ".html")
+									(build-string (cadar li) (- n-photos 1) (caddar li)))
+								(output-rec (cdr li)))))
+				(output-rec gallery-htmls)))
+		  (generate-tacke-td
+			(lambda (short-name long-name i j special-title for-sale)
+				(let ((filename (build-string short-name i "-bild" j)))
+					(generate-gallery-photo-html filename long-name i special-title for-sale)
+					(generate-mini-gallery-td filename)
+						)))
+		  (generate-tacke-tr
+			(lambda (short-name long-name i properties)
+				(define (output-property-special pre-str sym al post-str)
+					(let ((res (get-property sym al)))
+						(if res (build-string pre-str res post-str) "")))
+				(define (output-gallery-property-short sym)
+					(output-property-special "" sym properties "<br/>"))
+				(define (output-gallery-property-long sym)
+					(output-property-special (output-property-special "" sym gallery-list-properties-define ": ") sym properties "<br/>"))
+				(let* ((n (get-property 'number-of-photos properties))
+					   (status (get-property 'status properties))
+					   (for-sale (equal? status 'for-sale)))
+					(build-string
+						"<tr>" #\newline
+						
+						"<td>" #\newline
+						long-name " " i "<br/>"
+						(output-gallery-property-short 'name)
+						(output-gallery-property-short 'pattern)
+						(output-gallery-property-short 'size)
+						(output-gallery-property-short 'year)
+						(get-property status patchwork-status-text)
+						(if for-sale
+							(build-string
+								" "
+								(get-property 'price properties)
 								"<br/>"
-								)
-							(output-gallery-property-long 'photo)
-							(get-property 'text properties) #\newline
-							"</td>" #\newline
-							"</tr>" #\newline
-							#\newline
-						))))
-			  (generate-trs
-				(lambda (short-name long-name lst)
-					(do
-						((i 1 (+ i 1))
-						(li lst (cdr li))
-						(res '() (cons (generate-tacke-tr short-name long-name i (car li)) res)))
-						((null? li) (apply build-string (reverse res))))))
-				)
-		(do
-			((li gallery-list (cdr li))
-			 (res '() (cons (generate-trs (car (car li)) (cadr (car li)) (caddr (car li))) res)))
-			((null? li) (begin (generate-gallery-photo-html #f "" 0 #f #f)
-								(output-gallery-html-files)
-								(apply build-string (reverse res)))))
-		))
+								"  " (output-gallery-property-long 'price1)
+								"  " (output-gallery-property-long 'price2))
+							"<br/>"
+							)
+						(output-gallery-property-long 'photo)
+						(get-property 'text properties) #\newline
+						"</td>" #\newline
+						
+						(do ((j 1 (+ j 1))
+							(res '() (cons (generate-tacke-td short-name long-name i j (get-property 'special-title properties) for-sale)
+											res)))
+							((> j n) (reverse res)))
+						
+						"</tr>" #\newline
+						#\newline
+					))))
+		  (generate-trs
+			(lambda (short-name long-name lst)
+				(do
+					((i 1 (+ i 1))
+					(li lst (cdr li))
+					(res '() (cons (generate-tacke-tr short-name long-name i (car li)) res)))
+					((null? li) (apply build-string (reverse res))))))
+			)
+	(do
+		((li gallery-list (cdr li))
+		 (res '() (cons (generate-trs (car (car li)) (cadr (car li)) (caddr (car li))) res)))
+		((null? li) (begin (generate-gallery-photo-html #f "" 0 #f #f)
+							(output-gallery-html-files)
+							(apply build-string (reverse res)))))
+	))
 
-	</table>
+</table>
 
 ##((generate-html-frames-end))
 	
