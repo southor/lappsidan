@@ -4,7 +4,9 @@
 			((os (open-output-string)))
 			(write "assertion-failed: " os)
 			(write expr os)
-			(error (get-output-string string-output-port)))))
+			;;(error (get-output-string string-output-port))
+			(error (get-output-string os))
+			)))
 			
 (define (memf cmp-fun obj list)
 	(define (mem-rec list)
