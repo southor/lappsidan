@@ -14,6 +14,10 @@
 			(open-output-file (filename-to-minor-extension filename))
 			;;(open-output-file filename)
 			)
+	(define (my-open-binary-output-file filename)
+			(open-file-output-port (filename-to-minor-extension filename))
+			;;(open-output-file filename)
+			)
 	;;(define my-open-output-file open-output-file)
 	(define preprocess-file-generate  
         (let ()
@@ -101,12 +105,18 @@
 	
 		;;(display "	(moving) writing to file: ") (display output-file) (newline)
 	
-		(let ((input (open-input-file input-file))
-				(output (my-open-output-file output-file))
+		(let (
+		        ;;(input (open-input-file input-file))
+				;;(output (my-open-output-file output-file))
+				(input (open-file-input-port input-file))
+				(output (my-open-binary-output-file output-file))
 				)
-			(do ((char (read-char input) (read-char input)))
+			(begin (if (binary-port? input) (display "yes binary port!!!!") (display "no, a normal port")) (newline))
+			(do (;;(char (read-char input) (read-char input)))
+			     (char (get-u8 input) (get-u8 input)))
 					((eof-object? char) 'ok)
-					(write-char char output)
+					;;(write-char char output)
+					(put-u8 output char)
 					)
 			(close-input-port input)
 			(close-output-port output)
