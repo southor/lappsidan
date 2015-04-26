@@ -1,0 +1,1 @@
+A project to make a homepage for selling patchwork locally in Sweden.
